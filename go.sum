@@ -1,0 +1,10 @@
+github.com/line/line-bot-sdk-go v7.8.0+incompatible h1:Uf9/OxV0zCVfqyvwZPH8CrdiHXXmMRa/L91G3btQblQ=
+github.com/line/line-bot-sdk-go v7.8.0+incompatible/go.mod h1:0RjLjJEAU/3GIcHkC3av6O4jInAbt25nnZVmOFUgDBg=
+github.com/line/line-bot-sdk-go/v7 v7.18.0 h1:ogrOioYKnCuyDlbNAuFb7hGdv1KGkluKWUcZx/Uocds=
+github.com/line/line-bot-sdk-go/v7 v7.18.0/go.mod h1:2CXH5xBgADszymGNRRUiUqBQ/0G6r2nx3BviBYtnB3U=
+github.com/paijerry/ezapi v1.0.0 h1:5FYA5aYnHOvCvzxPogni1a6MhgAlT1P3pp6990G6LK4=
+github.com/paijerry/ezapi v1.0.0/go.mod h1:9FOfLYmdT3XmtQuclwJf2IPFinsKZOANHVYDyOxyDLI=
+github.com/zabawaba99/firego v0.0.0-20190331000051-3bcc4b6a4599 h1:Dp7CeY6ZqQryz7aK3h/7eCsBD9aB7bsS2LfZPcC06Co=
+github.com/zabawaba99/firego v0.0.0-20190331000051-3bcc4b6a4599/go.mod h1:j54MZVdpCPLSkR7SgnKOKtrMnjbfDWEbfSb+HodFaHY=
+gopkg.in/zabawaba99/firego.v1 v1.0.0-20190331000051-3bcc4b6a4599 h1:6tee3tOL08HN/dELJ2oqGniOP4rguQapttHTRL+EXds=
+gopkg.in/zabawaba99/firego.v1 v1.0.0-20190331000051-3bcc4b6a4599/go.mod h1:rigVqetXSZPScx4X6R9+URJkQcxn9EDiqJxFuY2XQW0=
