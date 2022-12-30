@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"os"
 
 	"github.com/paijerry/ezapi"
 )
@@ -27,7 +28,7 @@ func generateImageResponse(req Image) (o string, err error) {
 
 	header := http.Header{}
 	header.Add("Content-Type", "application/json")
-	header.Add("Authorization", "Bearer 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")
+	header.Add("Authorization", "Bearer "+os.Getenv("OpenAiToken"))
 	url := "https://api.openai.com/v1/images/generations"
 	reqByte, err := json.Marshal(req)
 	if err != nil {

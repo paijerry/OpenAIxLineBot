@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/line/line-bot-sdk-go/linebot"
@@ -10,8 +11,8 @@ import (
 
 func main() {
 	bot, err := linebot.New(
-		"a7239e0c8b146b265c9da3709443aa95",
-		"i5A8zhXgtvEDSULP8wzeTSFj8cvNu7rcy0WOWmqYC2ePRKQ30Ka3MWCXKegBh7veObrEPAnW6ZrB7Rcx/hj8ZZXTQ+zIuia1rGIsN8Ml9ofuPUvqHHEbMaULsghS7H6H/m7+VPgSP4sixoWnElo3NAdB04t89/1O/w1cDnyilFU=",
+		os.Getenv("ChannelSecret"),
+		os.Getenv("ChannelAccessToken"),
 	)
 	if err != nil {
 		log.Fatal(err)

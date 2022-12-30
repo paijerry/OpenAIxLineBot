@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/paijerry/ezapi"
@@ -30,7 +31,7 @@ func generateChatResponse(req Chat) (o string, err error) {
 
 	header := http.Header{}
 	header.Add("Content-Type", "application/json")
-	header.Add("Authorization", "Bearer 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")
+	header.Add("Authorization", "Bearer "+os.Getenv("OpenAiToken"))
 	url := "https://api.openai.com/v1/completions"
 	reqByte, err := json.Marshal(req)
 	if err != nil {
