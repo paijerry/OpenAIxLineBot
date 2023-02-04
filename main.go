@@ -56,7 +56,7 @@ func main() {
 								Model:             "text-davinci-003",
 								Prompt:            p,
 								N:                 1,
-								MaxTokens:         2048,
+								MaxTokens:         4000,
 								Temperature:       0.9,
 								TopP:              1,
 								Frequency_Penalty: 0.5,
