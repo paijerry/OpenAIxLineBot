@@ -6,16 +6,20 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"strings"
 
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/paijerry/ezapi"
 )
 
 type Chat struct {
-	Model     string `json:"model"`
-	Prompt    string `json:"prompt"`
-	N         int64  `json:"n"`
-	MaxTokens int64  `json:"max_tokens"`
+	Model             string  `json:"model"`
+	Prompt            string  `json:"prompt"`
+	N                 int64   `json:"n"`
+	Temperature       float64 `json:"temperature"`
+	TopP              int64   `json:"top_p"`
+	MaxTokens         int64   `json:"max_tokens"`
+	Frequency_Penalty float64 `json:"frequency_penalty"`
+	Presence_Penalty  float64 `json:"presence_penalty"`
 }
 
 type RspnChat struct {
@@ -38,7 +42,7 @@ func generateChatResponse(req Chat) (o string, err error) {
 		return
 	}
 
-	rspn, err := ezapi.New().URL(url).Header(header).JSON(reqByte).Do("POST")
+	rspn, err := ezapi.New().URL(url).Header(header).JSON(reqByte).TimeOut(60).Do("POST")
 	if err != nil {
 		return
 	}
@@ -46,7 +50,7 @@ func generateChatResponse(req Chat) (o string, err error) {
 		err = errors.New("HTTPStatus:" + string(rspn.StatusCode) + " => " + string(rspn.Body))
 		return
 	}
-
+	fmt.Println(string(rspn.Body))
 	result := RspnChat{}
 	err = json.Unmarshal(rspn.Body, &result)
 	if err != nil {
@@ -58,10 +62,11 @@ func generateChatResponse(req Chat) (o string, err error) {
 		err = errors.New("Error: No data => " + string(rspn.Body))
 		return
 	}
-	fmt.Println(result.Choices[0].Text)
-	if strings.HasPrefix(result.Choices[0].Text, "\n\n") {
-		result.Choices[0].Text = strings.Replace(result.Choices[0].Text, "\n\n", "", 1)
-	}
+	//fmt.Println(result.Choices[0].Text)
+
+	// if strings.HasPrefix(result.Choices[0].Text, "\n\n") {
+	// 	result.Choices[0].Text = strings.Replace(result.Choices[0].Text, "\n\n", "", 1)
+	// }
 
 	return result.Choices[0].Text, nil
 }

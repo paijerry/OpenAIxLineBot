@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/paijerry/ezapi"
 )
 
@@ -35,7 +36,7 @@ func generateImageResponse(req Image) (o string, err error) {
 		return
 	}
 
-	rspn, err := ezapi.New().URL(url).Header(header).JSON(reqByte).Do("POST")
+	rspn, err := ezapi.New().URL(url).Header(header).JSON(reqByte).TimeOut(60).Do("POST")
 	if err != nil {
 		return
 	}
