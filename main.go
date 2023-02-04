@@ -49,11 +49,7 @@ func main() {
 					case strings.HasPrefix(message.Text, "/t "):
 						msg := strings.Replace(message.Text, "/t ", "", 1)
 						var p string
-						if ps == "" {
-							p = msg + "\n"
-						} else {
-							p = ps + "You: " + msg + "\nBot:"
-						}
+						p = ps + "You: " + msg + "\nBot:"
 
 						response, err = generateChatResponse(
 							Chat{
@@ -76,15 +72,14 @@ func main() {
 							reply = strings.Replace(reply, "\n", "", 1)
 						}
 
-						if ps == "" {
-							ps = "You: " + p + "Bot:" + response + "\n"
-						} else {
-							ps = p + response + "\n"
-						}
+						ps = p + response + "\n"
 
 						if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply)).Do(); err != nil {
 							log.Print(err)
 						}
+					case strings.HasPrefix(message.Text, "/x "):
+						msg := strings.Replace(message.Text, "/x ", "", 1)
+						ps = ps + "Bot: " + msg + "\n"
 					case strings.HasPrefix(message.Text, "/i "):
 						response, err = generateImageResponse(
 							Image{
