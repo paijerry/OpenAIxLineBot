@@ -25,13 +25,18 @@ type Chat struct {
 type RspnChat struct {
 	Createed int64          `json:"created"`
 	Choices  []RspnChatData `json:"choices"`
+	Usage    RspnUsage      `json:"usage"`
 }
 
 type RspnChatData struct {
 	Text string `json:"text"`
 }
 
-func generateChatResponse(req Chat) (o string, err error) {
+type RspnUsage struct {
+	TotalTokens int64 `json:"total_tokens"`
+}
+
+func generateChatResponse(req Chat) (o string, totalTokens int64, err error) {
 
 	header := http.Header{}
 	header.Add("Content-Type", "application/json")
@@ -68,5 +73,5 @@ func generateChatResponse(req Chat) (o string, err error) {
 	// 	result.Choices[0].Text = strings.Replace(result.Choices[0].Text, "\n\n", "", 1)
 	// }
 
-	return result.Choices[0].Text, nil
+	return result.Choices[0].Text, result.Usage.TotalTokens, nil
 }
